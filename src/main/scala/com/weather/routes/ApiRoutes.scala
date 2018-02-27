@@ -37,5 +37,11 @@ trait ApiRoutes extends JsonSupport {
             complete("Ok")
           }
         }
-    }
+    } ~
+      pathPrefix("api" / Segment / IntNumber) { (key, value) =>
+        get {
+          complete(s"$key=$value")
+        }
+      }
+
 }

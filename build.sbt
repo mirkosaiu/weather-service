@@ -2,7 +2,10 @@ lazy val akkaHttpVersion = "10.0.11"
 lazy val akkaVersion    = "2.5.8"
 
 enablePlugins(JavaAppPackaging)
-
+enablePlugins(JavaServerAppPackaging)
+enablePlugins(RpmPlugin)
+enablePlugins(SystemdPlugin)
+enablePlugins(DockerPlugin)
 
 lazy val root = (project in file(".")).
   settings(
@@ -25,3 +28,7 @@ lazy val root = (project in file(".")).
       "org.scalatest"     %% "scalatest"            % "3.0.1"         % Test
     )
   )
+
+
+rpmVendor := "typesafe"
+rpmLicense := Some("licence di stamminchia")
