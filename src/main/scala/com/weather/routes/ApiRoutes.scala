@@ -42,6 +42,11 @@ trait ApiRoutes extends JsonSupport {
         get {
           complete(s"$key=$value")
         }
+      } ~
+      pathPrefix(Segment / Segment / Segment) { (name1, name2, adjective) =>
+        get {
+          complete(s"$name1 e $name2 sono $adjective.")
+        }
       }
 
 }

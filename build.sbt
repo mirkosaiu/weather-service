@@ -29,6 +29,7 @@ lazy val root = (project in file(".")).
     )
   )
 
+import com.typesafe.sbt.packager.docker._
 
-rpmVendor := "typesafe"
-rpmLicense := Some("licence di stamminchia")
+// use += to add an item to a Sequence
+dockerCommands += Cmd("EXPOSE", "8080")
