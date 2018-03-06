@@ -1,7 +1,7 @@
 package com.weather
 
-import awscala.Credentials
-import com.amazonaws.regions.{ Region, Regions }
+import awscala.{ Credentials, Region }
+import com.amazonaws.regions.Regions
 import com.typesafe.config.ConfigFactory
 
 trait MyConfiguration {

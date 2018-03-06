@@ -1,24 +1,27 @@
 package com.weather
 
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
+import actors.UserRegistryActor
 import akka.actor.{ ActorRef, ActorSystem }
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
-import com.weather.actors.UserRegistryActor
-import com.weather.routes.ApiRoutes
+import routes.ApiRoutes
 
-object QuickstartServer extends App with ApiRoutes {
+import scala.concurrent.Await
+import scala.concurrent.duration.Duration
+
+object QuickstartServer extends ApiRoutes {
 
   implicit val system: ActorSystem = ActorSystem("helloAkkaHttpServer")
   implicit val materializer: ActorMaterializer = ActorMaterializer()
-
-  val userRegistryActor: ActorRef = system.actorOf(UserRegistryActor.props, "userRegistryActor")
+  //  val userRegistryActor: ActorRef = system.actorOf(UserRegistryActor.props, "userRegistryActor")
 
   lazy val routes: Route = apiRoutes
 
-  Http().bindAndHandle(routes, "0.0.0.0", 8080)
-  println(s"Server online at http://localhost:8080/")
-  Await.result(system.whenTerminated, Duration.Inf)
+  def main(args: Array[String]): Unit = {
+
+    Http().bindAndHandle(routes, "0.0.0.0", 8080)
+    println(s"Server online at http://localhost:8080/")
+    Await.result(system.whenTerminated, Duration.Inf)
+  }
 }

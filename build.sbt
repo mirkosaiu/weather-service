@@ -30,6 +30,9 @@ lazy val root = (project in file(".")).
   )
 
 import com.typesafe.sbt.packager.docker._
-
 // use += to add an item to a Sequence
 dockerCommands += Cmd("EXPOSE", "8080")
+
+
+mainClass in Compile := Some("com.weather.QuickstartServer")
+

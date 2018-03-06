@@ -12,7 +12,7 @@ import akka.http.scaladsl.server.directives.RouteDirectives.complete
 import scala.concurrent.Future
 import akka.util.Timeout
 import com.weather.JsonSupport
-import com.weather.db.{ Measurement, MeasurementSchema, Measurements }
+import com.weather.db.{ MeasurementSchema, Measurements, Measurement }
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -21,7 +21,7 @@ trait ApiRoutes extends JsonSupport {
   implicit def system: ActorSystem
   lazy val log = Logging(system, classOf[ApiRoutes])
   // other dependencies that UserRoutes use
-  def userRegistryActor: ActorRef
+  //  def userRegistryActor: ActorRef
   // Required by the `ask` (?) method below
   implicit lazy val timeout = Timeout(5.seconds) // usually we'd obtain the timeout from the system's configuration
 
@@ -47,6 +47,11 @@ trait ApiRoutes extends JsonSupport {
         get {
           complete(s"$name1 e $name2 sono $adjective.")
         }
-      }
+      } ~
+  pathSingleSlash {
+    get {
+      complete("Welcome to my APP.")
+    }
+  }
 
 }

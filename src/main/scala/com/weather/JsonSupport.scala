@@ -2,9 +2,9 @@ package com.weather
 
 import java.util.UUID
 
+import actors.UserRegistryActor.ActionPerformed
+import actors.{ User, Users }
 import akka.http.scaladsl.marshallers.sprayjson.SprayJsonSupport
-import com.weather.actors.{ User, Users }
-import com.weather.actors.UserRegistryActor.ActionPerformed
 import com.weather.db.{ Measurement, Measurements }
 import spray.json.{ DefaultJsonProtocol, DeserializationException, JsString, JsValue, JsonFormat }
 
