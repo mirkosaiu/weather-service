@@ -48,10 +48,10 @@ trait ApiRoutes extends JsonSupport {
           complete(s"$name1 e $name2 sono $adjective.")
         }
       } ~
-  pathSingleSlash {
-    get {
-      complete("Welcome to my APP.")
-    }
-  }
+      pathSingleSlash {
+        get {
+          complete("Welcome to my App.")
+        }
+      }
 
 }
