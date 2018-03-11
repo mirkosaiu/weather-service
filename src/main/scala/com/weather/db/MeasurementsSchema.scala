@@ -28,12 +28,12 @@ object MeasurementSchema extends DynamoTable with MyDynamoDb {
     )
   }
 
-  private val measurement = Table[Measurement](table)
+  private val measurements = Table[Measurement](table)
 
-  def addItem(m: Measurement) = Scanamo.exec(db)(measurement.put(m))
+  def addItem(m: Measurement) = Scanamo.exec(db)(measurements.put(m))
 
   def getAll: Future[List[Measurement]] = Future {
-    Scanamo.exec(db)(measurement.scan()).filter {
+    Scanamo.exec(db)(measurements.scan()).filter {
       case Left(_) =>
         log.error("DynamoReadError occurred."); false
       case Right(_) => true
