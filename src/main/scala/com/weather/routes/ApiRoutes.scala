@@ -50,7 +50,7 @@ trait ApiRoutes extends JsonSupport {
       } ~
       pathSingleSlash {
         get {
-          complete("Welcome to my App. Ciao Pallina e Gufetta. Gufetta è affamata e pallina e in paranoia")
+          complete("Welcome to my App. eccheccazzo!!")
         }
       }
 
