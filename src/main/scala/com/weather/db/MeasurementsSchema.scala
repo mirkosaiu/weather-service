@@ -19,14 +19,14 @@ object MeasurementSchema extends DynamoTable with MyDynamoDb {
   val log: Log = LogFactory.getLog(MeasurementSchema.getClass)
   val table = "Measurements"
 
-  if (!db.tableNames.contains(table)) {
-    db.createTable(
-      util.Arrays.asList(new AttributeDefinition("id", ScalarAttributeType.S)),
-      table,
-      util.Arrays.asList(new KeySchemaElement("id", KeyType.HASH)),
-      new ProvisionedThroughput(10L, 10L)
-    )
-  }
+  //  if (!db.tableNames.contains(table)) {
+  //    db.createTable(
+  //      util.Arrays.asList(new AttributeDefinition("id", ScalarAttributeType.S)),
+  //      table,
+  //      util.Arrays.asList(new KeySchemaElement("id", KeyType.HASH)),
+  //      new ProvisionedThroughput(10L, 10L)
+  //    )
+  //  }
 
   private val measurements = Table[Measurement](table)
 
