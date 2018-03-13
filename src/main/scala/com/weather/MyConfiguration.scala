@@ -26,9 +26,4 @@ trait MyConfiguration {
     case _ => ConfigFactory.load("application")
   }
 
-  val awsAccessKeyId: String = conf.getString("aws.accessKeys.accessKeyId")
-  val awsSecretAccessKey: String = conf.getString("aws.accessKeys.secretAccessKey")
-
-  val awsCredentials = Credentials.apply(awsAccessKeyId, awsSecretAccessKey)
-
 }

@@ -1,6 +1,7 @@
 package com.weather.db
 
 import awscala.dynamodbv2.DynamoDB
+import com.amazonaws.regions.{ Region, Regions }
 import com.weather.MyConfiguration
 
 trait MyDynamoDb extends MyConfiguration {
@@ -8,5 +9,5 @@ trait MyDynamoDb extends MyConfiguration {
   //  implicit val db = DynamoDB.local()
 
   // SERVER
-  implicit val db: DynamoDB = DynamoDB.apply(awsCredentials)
+  implicit val db: DynamoDB = DynamoDB.at(Region.getRegion(Regions.US_WEST_2))
 }
