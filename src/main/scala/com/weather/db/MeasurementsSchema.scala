@@ -12,7 +12,8 @@ import scala.concurrent.{ Await, Future }
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.Random
 
-final case class Measurement(id: UUID, hardwareVersion: Option[String], gpsPosition: Option[Int], temperature: Option[Int], humidity: Option[Int], pressure: Option[Int], light: Option[Int])
+final case class MeasurementFromStation(temperature: Double, humidity: Double, pressure: Double, luminosity: Int, gas: Int)
+final case class Measurement(id: UUID, hardwareVersion: Option[String], gpsPosition: Option[Int], temperature: Option[Double], humidity: Option[Double], pressure: Option[Double], luminosity: Option[Int], gas: Option[Double])
 final case class Measurements(measurements: Seq[Measurement])
 
 object MeasurementSchema extends DynamoTable with MyDynamoDb {
