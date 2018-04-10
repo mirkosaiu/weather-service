@@ -15,6 +15,7 @@ import scala.concurrent.Future
 import akka.util.Timeout
 import com.weather.JsonSupport
 import com.weather.db.{Measurement, MeasurementFromStation, MeasurementSchema, Measurements}
+import org.joda.time.DateTime
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -33,7 +34,7 @@ trait ApiRoutes extends JsonSupport {
         } ~
         post { // store measurement from the station
           entity(as[MeasurementFromStation]) { m =>
-            val measurement = Measurement(UUID.randomUUID(), Some("1.0"), Some(0), Some(m.temperature), Some(m.humidity), Some(m.pressure), Some(m.luminosity), Some(m.gas))
+            val measurement = Measurement(UUID.randomUUID(), Some("1.0"), Some(0), Some(DateTime.now), Some(m.temperature), Some(m.humidity), Some(m.pressure), Some(m.luminosity), Some(m.gas))
             MeasurementSchema.addItem(measurement)
             complete("Ok")
           }
