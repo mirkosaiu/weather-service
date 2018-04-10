@@ -17,7 +17,6 @@ import com.weather.JsonSupport
 import com.weather.db.{Measurement, MeasurementFromStation, MeasurementSchema, Measurements}
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.Random
 
 trait ApiRoutes extends JsonSupport {
   implicit def system: ActorSystem
