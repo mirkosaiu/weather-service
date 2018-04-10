@@ -5,6 +5,7 @@ import akka.actor.{ ActorRef, ActorSystem }
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Route
 import akka.stream.ActorMaterializer
+import org.joda.time.DateTime
 import routes.ApiRoutes
 
 import scala.concurrent.Await
@@ -19,6 +20,8 @@ object QuickstartServer extends ApiRoutes {
   lazy val routes: Route = apiRoutes
 
   def main(args: Array[String]): Unit = {
+
+    println(DateTime.now)
 
     Http().bindAndHandle(routes, "0.0.0.0", 8080)
     println(s"Server online at http://localhost:8080/")
